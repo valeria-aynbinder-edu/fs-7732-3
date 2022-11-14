@@ -95,16 +95,3 @@ print(50 not in grades)
 # You can assume that the maximum number of seat “batches” in any aircraft is 3.
 #
 
-
-
-# lists
-# slicing operator
-# nested lists
-
-# lists slicing exercise
-
-
-# airplane seats questions
-
-
-# list methods
