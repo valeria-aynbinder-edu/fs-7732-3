@@ -53,9 +53,94 @@
 
 # find max
 nums = [54, -1, 45, 987, 5, 2, 65, 7, 12]
-max_num = nums[0]
+# max_num = nums[0]
+#
+# for num in nums:
+#     if num > max_num:
+#         max_num = num
+# print(max_num)
+#
+# [1000, 54, -1, 45, 987, 5, 2, 65, 7, 12]
+# [54, -1, 45, 987, 5, 100, 2, 165, 7, 12]
 
-for num in nums:
-    if num > max_num:
-        max_num = num
-print(max_num)
+# nums = [-1, 54, 45, 987, 5, 2, 65, 7, 12]
+# nums = [54, -1]
+# [54, -1, 56] #Max = 56 secons = -1
+
+# max = 54 second_max = -1
+# num = 56
+# max = 56
+# [54, 5, 56]
+
+#  * second_max  *  max  *
+
+# max_num = max(nums[0:2])
+# second_max = min(nums[0:2])
+# max_num = nums[0]
+# second_max = nums[1]
+# for num in nums:
+#     # if num < second_max:
+#     #     continue
+#     if second_max < num <max_num:
+#         second_max = num
+#     if num > max_num:
+#         second_max = max_num
+#         max_num = num
+
+
+# while True:
+#     num = input("Insert grades number: ")
+#     if num.isdigit() and int(num) > 0:
+#         num = int(num)
+#         break
+#
+# names = []
+# grades = []
+# for i in range(num):
+#     name = input("Insert name: ")
+#     names.append(name)
+#     while True:
+#         grade = input(f"Insert {name}'s grade: ")
+#         if grade.isdigit() and 0 <= int(grade) <= 100:
+#             grade = int(grade)
+#             grades.append(grade)
+#             break
+#
+# print(f"Names: {names}, grades: {grades}")
+# print(f"The avg is: {sum(grades)/num}")
+
+
+# num = 19
+#
+# start_range = int(input("Insert start range: "))
+# end_range = int(input("Insert end range: "))
+# primes = []
+
+# for num in range(start_range, end_range+1):
+#     is_prime = True
+#     for i in range(2, num):
+#         if num % i == 0:
+#             # not prime
+#             is_prime = False
+#             break
+#
+#     if is_prime:
+#         primes.append(num)
+#
+# print(primes)
+
+
+rows = int(input("Num: "))
+for i in range(1, rows+1):
+    # print single row
+    for j in range(1, i+1):
+        print(j, end=" ")
+    # print('')
+    print('\n', end='')
+
+
+
+
+
+
+
