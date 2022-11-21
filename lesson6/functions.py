@@ -76,6 +76,21 @@ def is_pangram(sentence):
 
 
 
+# def my_sum(nums_list):
+#     return sum(nums_list)
+#
+# my_sum([3,4,6,2])
+# nums_list = [4,5,7]
+# my_sum(nums_list)
+
+##### INCORRECRT!!!!!!
+# nums_list = [4,5,7]
+# def my_sum():
+#     return sum(nums_list)
+#
+#
+# my_sum(nums_list)
+
 
 
 # sentence = input("Insert your sentence: ")
@@ -85,14 +100,15 @@ def is_pangram(sentence):
 # else:
 #     print("Your sentence is not a pangram")
 
-def get_sentence():
+def get_sentence() -> str:
     return input("Insert your sentence: ")
 
 pangram = is_pangram(get_sentence())
+# 1, 3, 5, 7, 8, 10, 12
+is_31_days_month()
 
-
-# year = int(input("Insert year: "))
-# is_leap_year = (year % 4 == 0) and (year % 100 != 0 or year % 400 == 0)
+year = int(input("Insert year: "))
+is_leap_year = (year % 4 == 0) and (year % 100 != 0 or year % 400 == 0)
 
 # another task: given a month and a year, print number of days in that month
 
