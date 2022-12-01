@@ -153,8 +153,8 @@ board = """
  3  |   |   | 0 |
     -------------
 """
-print(board)
-input("INsert: ")
+# print(board)
+# input("INsert: ")
 board = """
       1   2   3
     - - - - - - - 
@@ -165,7 +165,7 @@ board = """
  3  |   |   | 0 |
     -------------
 """
-print(board)
+# print(board)
 
 board = [['x', 'o', None],
          ['o', 'x', 'x'],
@@ -183,7 +183,9 @@ board = [['x', 'o', None],
         # rows
         # columns
         # diagonal
-
+board = [['x', 'o', None],
+         ['x', 'o', 'x'],
+         ['o', 'o', 'o']]
 
 def check_row_wins(board: list[list]) -> str | None:
     board_size = len(board)
@@ -192,8 +194,11 @@ def check_row_wins(board: list[list]) -> str | None:
             return 'x'
         elif row.count('o') == board_size:
             return 'o'
-        else:
-            return None
+    return None
+
+
+winner = check_row_wins(board)
+
 
 
 
