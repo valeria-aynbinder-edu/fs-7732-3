@@ -175,8 +175,8 @@ board = [['x', 'o', None],
 # get board size
 # get players name
 # draw a board
-while True:
-    pass
+# while True:
+#     pass
     # ask for turn of player
     # redraw board with turn
     # check wins
@@ -184,8 +184,16 @@ while True:
         # columns
         # diagonal
 
+
 def check_row_wins(board: list[list]) -> str | None:
-    pass
+    board_size = len(board)
+    for row in board:
+        if row.count('x') == board_size:
+            return 'x'
+        elif row.count('o') == board_size:
+            return 'o'
+        else:
+            return None
 
 
 
