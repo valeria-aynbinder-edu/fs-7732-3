@@ -97,19 +97,99 @@ fruits = [['apple', 'pear'],
           ['banana', 'mango'],
           ['orange', 'clementina']]
 
-new_list = []
-for i in fruits:
-    new_list.append(i)
-
-new_list[0][0] = 'mangustin'
-fruits[0][0] = 'mangustin'
-
-print(fruits)
-print(new_list)
+# new_list = []
+# for i in fruits:
+#     new_list.append(i)
+#
+# new_list[0][0] = 'mangustin'
+# fruits[0][0] = 'mangustin'
+#
+# print(fruits)
+# print(new_list)
 
 # new_list[0] = ['mangustin', 'salak']
 # print(fruits)
 # print(new_list)
+
+fruits = [['apple', 'pear'],
+          ['banana', 'mango'],
+          ['orange', 'clementina']]
+
+# new_fruits = fruits
+#
+# new_fruits = []
+# for elem in fruits:
+#     new_fruits.append(elem)
+#
+# new_fruits = fruits
+# fruits[0] = []
+# fruits[1][0] = 'bla'
+# print(fruits)
+# print(new_fruits)
+
+# vegs = ['tomato', 'cuecumber', 'potato']
+# # new_vegs = vegs
+# new_vegs = vegs.copy()
+# vegs[0] = 'onion'
+# print(vegs)
+# print(new_vegs)
+
+# new_fruits = fruits.copy()
+# fruits[0] = []
+# print(fruits)
+# print(new_fruits)
+# fruits[1][0] = 'tomato'
+# print(fruits)
+# print(new_fruits)
+
+
+board = """
+      1   2   3
+    - - - - - - - 
+ 1  | x |   |   |
+    -------------
+ 2  |   | x |   |
+    -------------
+ 3  |   |   | 0 |
+    -------------
+"""
+print(board)
+input("INsert: ")
+board = """
+      1   2   3
+    - - - - - - - 
+ 1  | x | 0 |   |
+    -------------
+ 2  |   | x |   |
+    -------------
+ 3  |   |   | 0 |
+    -------------
+"""
+print(board)
+
+board = [['x', 'o', None],
+         ['o', 'x', 'x'],
+         ['o', 'o', None]]
+
+
+# get board size
+# get players name
+# draw a board
+while True:
+    pass
+    # ask for turn of player
+    # redraw board with turn
+    # check wins
+        # rows
+        # columns
+        # diagonal
+
+def check_row_wins(board: list[list]) -> str | None:
+    pass
+
+
+
+
 
 # num1 = 35
 # num2 = 45
