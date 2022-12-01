@@ -1,6 +1,116 @@
-
-
 # mutability
+# name1 = input("Insert a name: ")
+# name2 = input("Insert a name: ")
+# print(f"id of name1: {id(name1)}")
+# print(f"id of name2: {id(name2)}")
+# print("name1 is name2", name1 is name2)
+# print("name1 == name2", name1 == name2)
+# name3 = name1
+# print("name1 is name3", name1 is name3)
+# print("name1 == name3", name1 == name3)
+
+# d1 = {1: 'a', 2: [2, 3, 'dfg']}
+# d2 = {3: 'c', 4: 'd', 5: 'e'}
+# d3 = {1: 'a', 2: [2, 3, 'dfg']}
+# print(d1 == d3)
+
+
+grades = {
+    'noam': {
+        'python': [99, 100],
+        'sql': [98, 90]
+    },
+    'joshua': {
+        'python': [98, 100, 97],
+        'sql': (99, 99)
+    }
+}
+# noam_sql = grades['noam']['sql']
+# grades['noam']['sql'].append(100)
+# print(noam_sql)
+# print(noam_sql is grades['noam']['sql'])
+
+# joshua_sql = grades['joshua']['sql']
+# grades['joshua']['sql'] = (99, 99, 100)
+# print("joshua_sql", joshua_sql)
+# print("grades['joshua']['sql']:", grades['joshua']['sql'])
+
+# #DR
+# def foo(word: str):
+#     word = 'Dr' + word
+#     return word
+#
+# a = 'Omer'
+# result = foo(a)
+# print(a)
+#
+# def foo(word: list):
+#     word.insert(0, 'D')
+#     word.insert(1, 'r')
+#     word.insert(2, ' ')
+#     # return word
+#
+# a = ['O', 'm', 'e', 'r']
+# foo(a)
+# print(a)
+# # print(result is a)
+
+
+# def foo(word: list):
+#     print(id(word))
+#     word = ['r', 't']
+#     return word
+#
+# a = ['O', 'm', 'e', 'r']
+# print(id(a))
+# result = foo(a)
+# print(a)
+# print(result)
+# print(result is a)
+
+# implement a function that receives
+# a list of strings and returns a list
+# that contains all the strings with
+# uppercase
+# def foo1(words: list) -> list:
+#     ret_list = []
+#     for elem in words:
+#         ret_list.append(elem.upper())
+#     return ret_list
+#
+# def foo2(words: list) -> list:
+#     for i in range(len(words)):
+#         words[i] = words[i].upper()
+#     return words
+#
+# my_list = ['valeria', 'gal', 'chen']
+# new_list = foo2(my_list)
+# print(my_list, new_list)
+
+# nums = [3, 4, 5, 8, 2, 3]
+# nums.sort()
+# ret_val = nums.sort()
+# ret_val = sorted(nums)
+# print(nums, ret_val)
+
+fruits = [['apple', 'pear'],
+          ['banana', 'mango'],
+          ['orange', 'clementina']]
+
+new_list = []
+for i in fruits:
+    new_list.append(i)
+
+new_list[0][0] = 'mangustin'
+fruits[0][0] = 'mangustin'
+
+print(fruits)
+print(new_list)
+
+# new_list[0] = ['mangustin', 'salak']
+# print(fruits)
+# print(new_list)
+
 # num1 = 35
 # num2 = 45
 # print(id(num1), id(num2))
