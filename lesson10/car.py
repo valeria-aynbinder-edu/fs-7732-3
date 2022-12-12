@@ -35,27 +35,48 @@ class Car:
         self.km = 0
         self.fuel = 0
 
+    def __str__(self):
+        return f"{self.manufacturer} {self.model} {self.color}"
+
     def fill_tank(self, liters) -> bool:
         if 0 < liters <= self.tank_capacity - self.fuel:
             self.fuel += liters
             return True
         return False
 
-
+    def drive(self, km) -> bool:
+        if km > 0 and (self.fuel * (100/self.fuel_consumption)) >= km:
+            self.km += km
+            self.fuel -= (self.fuel_consumption/100) * km
+            return True
+        return False
 
 car_mazda = Car('Mazda', '3', 'white', 2015, 20, 50)
+ret_val = car_mazda.drive(100)
+print(ret_val)
+car_mazda.fill_tank(10)
+ret_val = car_mazda.drive(15)
+print(ret_val)
+
+
+# car_mazda = Car('Mazda', '3', 'white', 2015, 20, 50)
 # car_mazda = Car.__init__(None, 'Mazda', '3',)
-car_toyota = Car('Toyota', 'Yaris', 'red', 2022, 10, 35)
+# car_toyota = Car('Toyota', 'Yaris', 'red', 2022, 10, 35)
+# car_mazda.drive()
 
-ret_val = car_mazda.fill_tank(30)
-print(f"retval is: {ret_val}, new fuel is mazda: {car_mazda.fuel}")
-print(f"new fuel is toyota: {car_toyota.fuel}")
-ret_val = car_mazda.fill_tank(40)
-print(f"retval is: {ret_val}, new fuel is mazda: {car_mazda.fuel}")
+# ret_val = car_mazda.fill_tank(30)
+# print(f"retval is: {ret_val}, new fuel is mazda: {car_mazda.fuel}")
+# print(f"new fuel is toyota: {car_toyota.fuel}")
+# ret_val = car_mazda.fill_tank(40)
+# print(f"retval is: {ret_val}, new fuel is mazda: {car_mazda.fuel}")
+#
+# print(isinstance(car_mazda, Car))
+# print(car_mazda)
 
-print(isinstance(car_mazda, Car))
-print(car_mazda)
+# ret_val = car_mazda.__str__()
+# print(ret_val)
 
+# print(car_mazda)
 
 # Car.fill_tank(car_mazda, 10)
 
@@ -63,6 +84,7 @@ print(car_mazda)
 # car_mazda.fuel += 50
 
 # l1 = list([3,4,5])
+# print(l1)
 # print(isinstance(l1, Car))
 # l2 = list([5,6,78])
 #
