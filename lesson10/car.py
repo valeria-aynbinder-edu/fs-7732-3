@@ -51,12 +51,13 @@ class Car:
             return True
         return False
 
-car_mazda = Car('Mazda', '3', 'white', 2015, 20, 50)
-ret_val = car_mazda.drive(100)
-print(ret_val)
-car_mazda.fill_tank(10)
-ret_val = car_mazda.drive(15)
-print(ret_val)
+if __name__ == '__main__':
+    car_mazda = Car('Mazda', '3', 'white', 2015, 20, 50)
+    ret_val = car_mazda.drive(100)
+    print(ret_val)
+    car_mazda.fill_tank(10)
+    ret_val = car_mazda.drive(15)
+    print(ret_val)
 
 
 # car_mazda = Car('Mazda', '3', 'white', 2015, 20, 50)
