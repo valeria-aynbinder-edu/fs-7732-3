@@ -1,7 +1,11 @@
 class BankAccount:
 
-    def __init__(self, bank_name: str, branch: str, account_num: int, account_holder: dict,
-                 usd_allowed: bool = False, credit_limit: float=0):
+    # PRIME = 4.75
+
+    def __init__(self, bank_name: str, branch: str, account_num: int,
+                 account_holder: dict,
+                 usd_allowed: bool = False, credit_limit: float = 0):
+
         self.bank_name: str = bank_name
         self.branch: str = branch
         self.account_num: int = account_num
@@ -9,10 +13,11 @@ class BankAccount:
 
         self.nis_balance: float = 0
         self.usd_balance: float = 0
+
         self.usd_allowed: bool = usd_allowed
         self.nis_credit_limit: float = credit_limit
 
-        self.transactions: dict[str, str] = {}
+        self.transactions: dict[str, list] = {}
 
     def __str__(self):
         return f"Account {self.account_num}"
@@ -48,7 +53,8 @@ class BankAccount:
         self._add_transaction(date, 'withdraw')
         return True
 
-    def deposit(self, date, amount: float, currency: str = 'nis'):
+    def deposit(self, date, amount: float, currency: str = 'nis') -> bool:
+        # if not BankAccount._valid_params(amount, currency):
         if not self._valid_params(amount, currency):
             return False
 
@@ -92,37 +98,48 @@ class BankAccount:
 
 
 if __name__ == '__main__':
+    # ac = BankAccount("sdf","sfd",234,{}, usd_allowed=True, credit_limit=3000)
+    # print(ac)
+
+    transactions = {
+        "11-11-2022": ["withdraw", "deposit"],
+        "12-11-2022": ["convert"]
+    }
+
+    transactions.get("11-11-2022", [])
+    transactions.get("13-11-2022", []) #None
+
 
     # create bank account
-    account1 = BankAccount('Discount', 'Kiryat Hasharon', 12345,
-                           {"id": "123345",
-                            "name": "Valeria",
-                            "address": "Netanya"},
-                           usd_allowed=True, credit_limit=10_000)
-    print(f"Current balance for {account1}: {account1.get_current_balance()}")
-
-    print("Trying to withdraw 10500 shekels passing the limit - should fail!")
-    result = account1.withdraw("11-12-2022", 10500)
-    print(f"Result: {result}")
-
-    print("Trying to withdraw 9500 shekels in the range of limit - should succeed!")
-    result = account1.withdraw("11-22-2022", 9500)
-    print(f"Result: {result}")
-
-    print(f"Current balance: {account1.get_current_balance()}")
-
-    print("Trying to convert 1000 shekels to USD - outside the limit, should fail")
-    result = account1.convert_to_usd("12-22-2022", 1000, 3.5)
-    print(f"Result: {result}")
-
-    print("Deposit 20_000 to account - should succeed")
-    result = account1.deposit("12-22-2022", 20000)
-    print(f"Result: {result}")
-
-    print("Deposit $5_000 to account - should succeed")
-    result = account1.deposit("12-22-2022", 5000, currency='usd')
-    print(f"Result: {result}")
-
-    print(f"New balance: {account1.get_current_balance()}")
-    print(f"Transactions on 11-22-2022: {account1.get_transactions_per_date('11-22-2022')}")
-    print(f"Transactions on 12-22-2022: {account1.get_transactions_per_date('12-22-2022')}")
+    # account1 = BankAccount('Discount', 'Kiryat Hasharon', 12345,
+    #                        {"id": "123345",
+    #                         "name": "Valeria",
+    #                         "address": "Netanya"},
+    #                        usd_allowed=True, credit_limit=10_000)
+    # print(f"Current balance for {account1}: {account1.get_current_balance()}")
+    #
+    # print("Trying to withdraw 10500 shekels passing the limit - should fail!")
+    # result = account1.withdraw("11-12-2022", 10500)
+    # print(f"Result: {result}")
+    #
+    # print("Trying to withdraw 9500 shekels in the range of limit - should succeed!")
+    # result = account1.withdraw("11-22-2022", 9500)
+    # print(f"Result: {result}")
+    #
+    # print(f"Current balance: {account1.get_current_balance()}")
+    #
+    # print("Trying to convert 1000 shekels to USD - outside the limit, should fail")
+    # result = account1.convert_to_usd("12-22-2022", 1000, 3.5)
+    # print(f"Result: {result}")
+    #
+    # print("Deposit 20_000 to account - should succeed")
+    # result = account1.deposit("12-22-2022", 20000)
+    # print(f"Result: {result}")
+    #
+    # print("Deposit $5_000 to account - should succeed")
+    # result = account1.deposit("12-22-2022", 5000, currency='usd')
+    # print(f"Result: {result}")
+    #
+    # print(f"New balance: {account1.get_current_balance()}")
+    # print(f"Transactions on 11-22-2022: {account1.get_transactions_per_date('11-22-2022')}")
+    # print(f"Transactions on 12-22-2022: {account1.get_transactions_per_date('12-22-2022')}")
