@@ -18,12 +18,6 @@ class Car:
         self.__km = 0
         self.fuel = 0
 
-    def get_manufacturer(self):
-        return self.__manufacturer
-
-    def get_model(self):
-        return self.__model
-
     def get_color(self):
         return self.__color
 
@@ -32,6 +26,12 @@ class Car:
             self.__color = color
             return True
         return False
+
+    def get_manufacturer(self):
+        return self.__manufacturer
+
+    def get_model(self):
+        return self.__model
 
     def __str__(self):
         return f"{self.__manufacturer} {self.__model} {self.__color}"

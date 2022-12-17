@@ -6,18 +6,42 @@ class BankAccount:
                  account_holder: dict,
                  usd_allowed: bool = False, credit_limit: float = 0):
 
-        self.bank_name: str = bank_name
-        self.branch: str = branch
-        self.account_num: int = account_num
-        self.holders: dict = account_holder
+        self.__bank_name: str = bank_name
+        self.__branch: str = branch
+        self.__account_num: int = account_num
+        self.__holder: dict = account_holder
 
-        self.nis_balance: float = 0
-        self.usd_balance: float = 0
+        self.__nis_balance: float = 0
+        self.__usd_balance: float = 0
 
-        self.usd_allowed: bool = usd_allowed
-        self.nis_credit_limit: float = credit_limit
+        self.__usd_allowed: bool = usd_allowed
+        self.__nis_credit_limit: float = credit_limit
 
-        self.transactions: dict[str, list] = {}
+        self.__transactions: dict[str, list] = {}
+
+    def get_bank_name(self):
+        return self.__bank_name
+
+    def get_branch(self):
+        return self.__branch
+
+    def set_branch(self, name):
+        self.__branch = name
+
+    def get_balance(self):
+        return {'nis': self.__nis_balance,
+                'usd': self.__usd_balance}
+
+    def get_account_num(self):
+        return self.__account_num
+
+
+    def get_holder(self):
+        return self.__holder
+
+    def set_holder_address(self, address):
+        self.__holder['address'] = address
+
 
     def __str__(self):
         return f"Account {self.account_num}"

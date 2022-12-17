@@ -12,21 +12,32 @@ class Point2D:
     def __str__(self):
         return f"({self.x},{self.y})"
 
+    def distance_from(self, other):
+        dx = self.x - other.x
+        dy = self.y - other.y
+        dist = math.sqrt(dx ** 2 + dy ** 2)
+        return dist
+    #
     def __eq__(self, other):
-        print("inside __eq__ of Point2D")
+        # print("inside __eq__ of Point2D")
         if not isinstance(other, Point2D):
             return False
         return self.x == other.x and self.y == other.y
-
-    def __ne__(self, other):
-        print("inside __ne__ of Point2D")
-        return self.x != other.x or self.y != other.y
+    #
+    # def __ne__(self, other):
+    #     print("inside __ne__ of Point2D")
+    #     return self.x != other.x or self.y != other.y
+    #
 
     def __add__(self, other):
         if not isinstance(other, Point2D):
             return None
         new_point = Point2D(self.x + other.x, self.y + other.y)
         return new_point
+
+    def __len__(self):
+        return 2
+
         # error, don't do it:
         # return (self.x + other.x, self.y +other.y)
 
@@ -42,19 +53,26 @@ if __name__ == '__main__':
     p1 = Point2D()
     p2 = Point2D(2, 5)
     print(p1, p2)
-    p2.translate(-2, -2)
-    p1.translate(3, 3)
-    print(p1)
-    print(p2)
-    p3 = Point2D(0, 3)
+    # p2.translate(-2, -2)
+    # p1.translate(3, 3)
+    # print(p1)
+    # print(p2)
+    # dist = p1.distance_from(p2)
+    # print(dist)
+    # print(p1 + p2)
+    print(p1 + "hello") #p1.__add__("hello")
+    p3 = Point2D(2, 5)
     print(f"p1: {p1}, p2: {p2}, p3:{p3}")
     print(f"p2 == p3: {p2 == p3}")
-    print(f"p2 == p1: {p2 == p1}")
-    print(f"p2 != p3: {p2 != p3}")
-    print(p2 == "hello")
-    # print("hello" == 'world')
-    p5 = p2 + p3
-    print(p5)
+    print(id(p2) == id(p3))
+    print(len(p2))
+
+    # print(f"p2 == p1: {p2 == p1}")
+    # print(f"p2 != p3: {p2 != p3}")
+    # print(p2 == "hello")
+    # # print("hello" == 'world')
+    # p5 = p2 + p3
+    # print(p5)
     # p5 :Point (p2.x+p3.x, p2.y + p3.y)
 
     # s1 = input()

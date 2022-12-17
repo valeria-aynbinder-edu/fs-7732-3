@@ -17,15 +17,38 @@ class Dog:
     def make_sound(self):
         print("Wof")
 
-    def trip_hours(self):
-        pass
 
 cat = Cat('russian blue', 'grey-blue', 'Oliver')
 dog = Dog('doberman', 'black', 'Bruno')
 
-# print(cat.name, dog.name)
+# cat.make_sound()
+# dog.make_sound()
+#
+# # print(cat.name, dog.name)
+#
+# animals_list = [cat, dog]
+# for animal in animals_list:
+#     print(animal.name)
+#     animal.make_sound()
 
-animals_list = [cat, dog]
-for animal in animals_list:
-    print(animal.name)
-    animal.make_sound()
+#
+# 5 + 8
+# 5 + 0.9
+# "apple" + "banana"
+
+l1 = [2, 3,45,7]
+word = "hello"
+
+len(l1)
+len(word)
+
+
+
+
+
+
+
+
+
+
+
