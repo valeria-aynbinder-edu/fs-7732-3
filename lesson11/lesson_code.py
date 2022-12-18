@@ -120,9 +120,3 @@ if __name__ == '__main__':
 # polymorphism
 # - cat/dog
 # - point
-# datetime
-# datetime exercises
-
-# ravkav
-
-# repr
