@@ -1,5 +1,5 @@
 # Base class / parent class
-import datetime
+import lesson_datetime
 
 
 class Person:

@@ -9,12 +9,15 @@
 # # Dates, Times, intervals, timezones, unix time
 # """
 #
-# import datetime
+import datetime
+# from datetime import datetime
+
 # # from datetime import datetime # do not do it
 #
-# # datetime.date
-# # datetime.datetime
-# # datetime.timedelta
+# datetime.date
+# datetime.time
+# datetime.datetime
+# datetime.timedelta
 #
 # """##  Get Current Date and Time"""
 #
@@ -34,9 +37,18 @@
 #
 # """## Get Current Date"""
 #
-# date_object = datetime.date.today()
-# print(type(date_object))
-# print(date_object)
+date_object = datetime.date.today()
+print(type(date_object))
+print(date_object)
+
+print(date_object.day, date_object.month, date_object.year)
+my_date = datetime.date(year=2000, month=2, day=10)
+my_date = datetime.date(2000, 2, 10)
+print(my_date)
+print(my_date.weekday())
+print(my_date.isoweekday())
+
+
 #
 # """## datetime classes
 # * date Class
@@ -59,8 +71,39 @@
 #
 # # timestamp = datetime.date.fromtimestamp(1326244364)
 # timestamp = datetime.date.fromtimestamp(1652595804)
-# # timestamp = datetime.date.fromtimestamp(0)
+# timestamp = datetime.date.fromtimestamp(0)
 # print("Date =", timestamp)
+#
+# dt1 = datetime.datetime.now()
+# print(dt1)
+# print(dt1.timestamp())
+# # "dd-mm-yyyy"
+# dt2 = datetime.datetime.strptime("19-12-2022", "%d-%m-%Y")
+# print(dt2)
+# dt2 = datetime.datetime.strptime(
+#     "***Mon, Dec 19, 2022, 5:30PM++++",
+#     "***%a, %b %d, %Y, %I:%M%p++++")
+# print(dt2)
+#
+# formatted_dt1 = dt1.strftime(
+#     "Today is %A, %B %d, %Y, and the time is: %H:%M")
+#
+# formatted_dt1 = dt1.strftime("%d %m %Y")
+# print(formatted_dt1)
+#
+# dt5 = datetime.datetime(2000, 3, 25,
+#                         hour=12, minute=30, second=12)
+# print(dt5)
+#
+# print(type(dt5.date()), dt5.date())
+# print(type(dt5.time()), dt5.time())
+#
+# now = datetime.datetime.now()
+# print(now)
+#
+# utcnow = datetime.datetime.utcnow()
+# print(utcnow)
+
 #
 # """### Print today's year, month and day"""
 #
@@ -130,11 +173,23 @@
 #
 # import datetime
 #
-# t1 = datetime.date(year = 2018, month = 7, day = 12)
-# t2 = datetime.date(year = 2017, month = 12, day = 23)
-# t3 = t1 - t2
-# print("type of t3: ", type(t3))
-# print("t3 =", t3)
+# t1 = datetime.date(year=2018, month=7, day=12)
+# t2 = datetime.date(year=2017, month=12, day=23)
+
+t1 = datetime.datetime.now()
+t2 = datetime.datetime(year=2017, month=12, day=23,
+                   hour=15, minute=34, second=12)
+t3 = t1 - t2
+print("type of t3: ", type(t3))
+print("t3 =", t3)
+print("total seconds:", t3.total_seconds())
+
+# n = datetime.datetime.now()
+# print("now", n)
+# now_plus_1_day = n + datetime.timedelta(days=1, weeks=1)
+# print(now_plus_1_day)
+# now_minus_1_day = n - datetime.timedelta(hours=3, minutes=20)
+# print(now_minus_1_day)
 #
 #
 # # print("type of t3 =", type(t3))
