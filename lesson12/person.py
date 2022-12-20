@@ -1,5 +1,5 @@
 # Base class / parent class
-import lesson_datetime
+import datetime
 
 
 class Person:
@@ -28,27 +28,33 @@ class Person:
     def __str__(self):
         return f"{self.get_full_name()}, lives at {self.get_address()}, {self.get_age()} years old"
 
+    def __repr__(self):
+        return self.__str__()
+
+    # def __repr__(self):
+    #     return self.get_full_name()
 
 # Derived / child class
 class Student(Person):
 
-
-    # if no init - will inherit from the parent
-    def __init__(self, first_name: str, last_name: str,
-                 address: str, email: str, bdate: datetime.date, study_year):
-        super().__init__(first_name, last_name, address, email, bdate)
-
-        self.study_year = study_year
-        self.grades = []
-
-    def add_grade(self, grade):
-        self.grades.append(grade)
-
-    def get_best_grade(self):
-        return max(self.grades)
-
     def __str__(self):
-        return f"Student {super().__str__()}, starts studying at {self.study_year}"
+        return f"Student: {super().__str__()}"
+    # if no init - will inherit from the parent
+    # def __init__(self, first_name: str, last_name: str,
+    #              address: str, email: str, bdate: datetime.date, study_year):
+    #     super().__init__(first_name, last_name, address, email, bdate)
+    #
+    #     self.study_year = study_year
+    #     self.grades = []
+
+    # def add_grade(self, grade):
+    #     self.grades.append(grade)
+    #
+    # def get_best_grade(self):
+    #     return max(self.grades)
+    #
+    # def __str__(self):
+    #     return f"Student {super().__str__()}, starts studying at {self.study_year}"
 #
 #
 # # Derived / child class

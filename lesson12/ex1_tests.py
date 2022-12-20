@@ -2,6 +2,7 @@ from lesson12.ex1 import get_date_in_3_days
 
 
 def test_same_week():
+    
     print("Testing the same week dates...")
     orig = "2022-12-19, Mon, 10:00"
     ret_val = get_date_in_3_days(orig)
