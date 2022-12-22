@@ -3,7 +3,9 @@ import datetime
 
 
 class Person:
-    def __init__(self, first_name: str, last_name: str, address: str, email: str, bdate: datetime.date):
+
+    def __init__(self, first_name: str, last_name: str, address: str,
+                 email: str, bdate: datetime.date):
         self.__first_name = first_name
         self.__last_name = last_name
         self.__address = address
@@ -26,7 +28,9 @@ class Person:
         return datetime.date.today().year - self.__birth_date.year
 
     def __str__(self):
-        return f"{self.get_full_name()}, lives at {self.get_address()}, {self.get_age()} years old"
+        return f"{self.get_full_name()}, " \
+               f"lives at {self.get_address()}, " \
+               f"{self.get_age()} years old"
 
     def __repr__(self):
         return self.__str__()
@@ -34,21 +38,46 @@ class Person:
     # def __repr__(self):
     #     return self.get_full_name()
 
+
 # Derived / child class
 class Student(Person):
 
+    # remove one param for student
+    # add extra param
+
+    def __init__(self, first_name: str, last_name: str, address: str,
+                 email: str, bdate: datetime.date, course_name: str):
+
+        super().__init__(first_name, last_name, address, email, bdate)
+        self.__course = course_name
+        self.__grades = []
+
+    def add_grade(self, grade):
+        self.__grades.append(grade)
+
+    def get_avg_grade(self):
+        return sum(self.__grades) / len(self.__grades)
+
     def __str__(self):
         return f"Student: {super().__str__()}"
+
+    # tal@gmail.com -> tal@jb.com
+    #["tal", "gmail.com"]
+    def get_student_email(self):
+        return super().get_email().split("@")[0] + "@jb.com"
+
+    # def test(self):
+    #     own_str = self.__str__()
+    #     parent_str = super().__str__()
+    #     return own_str, parent_str
+
+
+
     # if no init - will inherit from the parent
-    # def __init__(self, first_name: str, last_name: str,
-    #              address: str, email: str, bdate: datetime.date, study_year):
-    #     super().__init__(first_name, last_name, address, email, bdate)
-    #
     #     self.study_year = study_year
     #     self.grades = []
 
-    # def add_grade(self, grade):
-    #     self.grades.append(grade)
+
     #
     # def get_best_grade(self):
     #     return max(self.grades)
@@ -71,7 +100,7 @@ class Lecturer(Person):
         return self._salary
 
     def get_salary_per_course(self, course_hours):
-        return self._salary * course_hours
+        return self._salary * course_hours + 1000
 
     def __str__(self):
         return f"Lecturer {super().__str__()}"
@@ -80,7 +109,8 @@ class Lecturer(Person):
 class LeadLecturer(Lecturer):
 
     def __init__(self, first_name: str, last_name: str, address: str, email: str,
-                 bdate: datetime.date, salary_per_hour: int, conference_salary_addition_percent: int):
+                 bdate: datetime.date, salary_per_hour: int,
+                 conference_salary_addition_percent: int):
         super().__init__(first_name, last_name, address, email, bdate, salary_per_hour)
 
         self.__conference_salary_addition_percent = conference_salary_addition_percent
@@ -93,11 +123,12 @@ class LeadLecturer(Lecturer):
         return len(self.__conferences)
 
     def get_salary_per_conference(self, conference_hours):
-        return self._salary * (1+self.__conference_salary_addition_percent/100) * conference_hours
+        return self._salary * \
+               (1+self.__conference_salary_addition_percent/100) * conference_hours
         # return self._salary * (1+self.__conference_salary_addition_percent/100) * conference_hours
 
     def get_salary_per_course(self, course_hours, bonus=0):
-        return super().get_salary_per_course(course_hours) + bonus
+        return super().get_salary_per_course(course_hours) * bonus
 
     def __str__(self):
         return f"Lead {super().__str__()}"
