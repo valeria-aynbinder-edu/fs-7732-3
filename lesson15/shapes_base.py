@@ -1,3 +1,6 @@
+import math
+
+
 class Shape:
 
     def area(self):
@@ -22,4 +25,17 @@ class Rectangle(Shape):
 
 
 class Circle(Shape):
-    pass
+
+    def __init__(self, radius):
+        self._radius = radius
+
+    def area(self):
+        return math.pi * self._radius ** 2
+
+
+if __name__ == '__main__':
+
+    my_shape = Shape()
+    print(my_shape)
+    my_shape.area()
+

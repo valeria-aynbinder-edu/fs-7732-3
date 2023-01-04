@@ -28,7 +28,6 @@ class Rectangle(Shape):
 
         self._height = height
         self._width = width
-        # raise Exception()
 
     def area(self):
         return self._height * self._width
@@ -52,22 +51,15 @@ class Circle(Shape):
         return 2 * math.pi * self._radius
 
 
-class Abs(ABC):
-    pass
-    # @abstractmethod
-    # def bla(self):
-    #     pass
+if __name__ == '__main__':
+    # my_shape = Shape('mm', 'red')
+    r1 = Rectangle(3, 4, 'mm', 'white')
+    r2 = Rectangle(13, 40, 'cm', 'white')
+    r3 = Rectangle(3, 5, 'm', 'red')
+    c1 = Circle(5, 'mm', 'green')
+    c2 = Circle(6, 'cm', 'black')
 
-a = Abs()
+    shapes = [r1, r2, r3, c1, c2]
 
-
-# class Triangle(Shape):
-#
-#     @staticmethod
-#     def is_valid_triangle(a, b, c):
-
-
-
-# shape = Shape('cm', 'red')
-# rect = Rectangle(5, 7, 'm', 'red')
-# c = Circle(5, 'mm', 'blue')
+    for s in shapes:
+        print(s.area())
