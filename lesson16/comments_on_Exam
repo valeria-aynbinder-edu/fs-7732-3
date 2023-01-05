@@ -1,0 +1,13 @@
+look at grades as the amount of how you should improve
+
+1. using sets to detect rectange and it's sides, or just writing for to detect unique elements
+2. noone did the check for already existing shape in complex
+
+
+ if 'rectangle' not in shapes_dict:
+                    shapes_dict['rectangle'] = [[f'sides: {shape}, area: {rectanble_area(shape)}, perimeter: {rectangle_perimeter(shape)}']]
+                else:
+                    shapes_dict['rectangle'].append([f'sides: {shape}, area: {rectanble_area(shape)}, perimeter: {rectangle_perimeter(shape)}'])
+
+
+
