@@ -1,5 +1,7 @@
+from lesson16.bank.account import BankAccount
 from lesson16.bank.address import Address
 from lesson16.bank.branch import Branch
+from lesson7.gadget_store import Customer
 
 
 class Bank:
@@ -8,6 +10,11 @@ class Bank:
         self._name = name
         self._address = address
         self._branches: dict[int, Branch] = {}
+        self._customers: dict[int, Customer] = {}
+        self._accounts: dict[int, BankAccount] = {}
+
+
+
 
     def get_name(self):
         return self._name
@@ -39,6 +46,16 @@ class Bank:
             return False
         branch.set_branch_address(address)
         return True
+
+    def add_account(self, account_id, branch_id,
+                    customer_ids: list[int]) -> bool:
+        for i in customer_ids:
+            if i not in self._customers:
+                return False
+        account = BankAccount(account_id, branch_id, customer_ids)
+        self._accounts[account_id] = account
+
+
 
 
 if __name__ == '__main__':
