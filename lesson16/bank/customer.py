@@ -3,7 +3,7 @@ from address import Address
 
 class Customer:
     def __init__(self, customer_id: int, passport_id: int, name: str, surname: str,
-                 phone_number: str, address: Address, salary: int, account_ids: list[int]) -> None:
+                 phone_number: str, address: Address, salary: int) -> None:
         self.__customer_id: int = customer_id
         self.__passport_id: int = passport_id
         self.__name: str = name
@@ -11,7 +11,6 @@ class Customer:
         self.__phone_number: str = phone_number
         self.__address: Address = address
         self.__salary: int = salary
-        self._accounts = account_ids
 
     def get_customer_id(self) -> int:
         return self.__customer_id
@@ -48,9 +47,3 @@ class Customer:
 
     def set_customer_salary(self, salary: int) -> None:
         self.__salary = salary
-
-    def add_bank_account(self) -> None:
-        pass
-
-    def remove_bank_account(self) -> None:
-        pass

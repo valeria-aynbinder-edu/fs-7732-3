@@ -1,7 +1,7 @@
 from lesson16.bank.account import BankAccount
 from lesson16.bank.address import Address
 from lesson16.bank.branch import Branch
-from lesson7.gadget_store import Customer
+from lesson16.bank.customer import Customer
 
 
 class Bank:
@@ -12,9 +12,8 @@ class Bank:
         self._branches: dict[int, Branch] = {}
         self._customers: dict[int, Customer] = {}
         self._accounts: dict[int, BankAccount] = {}
-
-
-
+        self._account2customers: dict[int, set[Customer]] = {}
+        self._customer2accounts: dict[int, set[BankAccount]] = {}
 
     def get_name(self):
         return self._name
@@ -22,7 +21,6 @@ class Bank:
     def get_address(self) -> Address:
         return self._address
 
-    # CRUD
     def add_branch(self, branch_id: int, name: str,
                    address: Address) -> bool:
         if branch_id in self._branches:
@@ -47,13 +45,76 @@ class Bank:
         branch.set_branch_address(address)
         return True
 
-    def add_account(self, account_id, branch_id,
-                    customer_ids: list[int]) -> bool:
-        for i in customer_ids:
-            if i not in self._customers:
+    def remove_branch_by_id(self, branch_id) -> bool:
+        if branch_id in self._branches:
+            self._branches.pop(branch_id)
+            return True
+        else:
+            return False
+
+    def create_account(self, account_id, branch_id, customer_ids: set[int]) -> bool:
+        """
+        Creates a new account and associates it with provided customer ids.
+        If customer with provided id does not exist - returns False
+        :param account_id: the id of the new account
+        :param branch_id: branch id of the new account
+        :param customer_ids: ids of the customers that will become holders of this account
+        :return:
+        """
+        account_holders = set()
+        for customer_id in customer_ids:
+            if customer_id not in self._customers:
                 return False
-        account = BankAccount(account_id, branch_id, customer_ids)
+            else:
+                account_holders.add(self._customers[customer_id])
+        account = BankAccount(account_id, branch_id)
+
         self._accounts[account_id] = account
+        self._account2customers[account_id] = account_holders
+        for customer_id in customer_ids:
+            if customer_id not in self._customer2accounts:
+                self._customer2accounts[customer_id] = set()
+            self._customer2accounts[customer_id].add(account)
+
+        return True
+
+    def add_holder_to_account(self, account_id, customer_id) -> bool:
+        if account_id not in self._accounts or customer_id not in self._customers:
+            return False
+
+        current_account_holders = self._account2customers[account_id]
+        new_holder = self._customers[customer_id]
+        account = self._accounts[account_id]
+        if new_holder in current_account_holders:
+            # this person already a holder for this account
+            return False
+        else:
+            self._account2customers[account_id].add(new_holder)
+            self._customer2accounts[customer_id].add(account)
+            return True
+
+    def withdraw(self, account_id, amnt) -> bool:
+        if account_id not in self._accounts:
+            return False
+        account = self._accounts[account_id]
+        return account.withdraw(amnt)
+
+    def deposit(self, account_id, amnt) -> bool:
+        if account_id not in self._accounts:
+            return False
+        account = self._accounts[account_id]
+        return account.deposit(amnt)
+
+    def transfer(self, account_id_from, account_id_to, amnt) -> bool:
+        if account_id_from not in self._accounts or account_id_to not in self._accounts:
+            return False
+
+        account_from = self._accounts[account_id_from]
+        account_to = self._accounts[account_id_to]
+
+        if account_from.withdraw(amnt):
+            account_to.deposit(amnt)
+            return True
 
 
 
