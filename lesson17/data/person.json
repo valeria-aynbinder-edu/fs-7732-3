@@ -1,0 +1,15 @@
+[
+  {
+  "name": "Valeria",
+  "id": "234234234",
+  "year": 1987,
+  "address": "netanya"},
+
+  {"name":  "Liav",
+  "id":  "222222222",
+  "year":  2002,
+  "address":  "Zofit",
+  "grades":  {
+    "python": [90, 99, 100]
+  }}
+]
