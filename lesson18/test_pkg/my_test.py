@@ -1,0 +1,1 @@
+alice_path = "../data/alice_in_wonderland.txt"
