@@ -10,8 +10,10 @@ class Bank:
         self._name = name
         self._address = address
         self._branches: dict[int, Branch] = {}
+
         self._customers: dict[int, Customer] = {}
         self._accounts: dict[int, BankAccount] = {}
+
         self._account2customers: dict[int, set[Customer]] = {}
         self._customer2accounts: dict[int, set[BankAccount]] = {}
 
@@ -61,15 +63,19 @@ class Bank:
         :param customer_ids: ids of the customers that will become holders of this account
         :return:
         """
+        if account_id in self._accounts:
+            return False
+
         account_holders = set()
         for customer_id in customer_ids:
             if customer_id not in self._customers:
                 return False
             else:
                 account_holders.add(self._customers[customer_id])
-        account = BankAccount(account_id, branch_id)
 
+        account = BankAccount(account_id, branch_id)
         self._accounts[account_id] = account
+
         self._account2customers[account_id] = account_holders
         for customer_id in customer_ids:
             if customer_id not in self._customer2accounts:
@@ -105,7 +111,7 @@ class Bank:
         account = self._accounts[account_id]
         return account.deposit(amnt)
 
-    def transfer(self, account_id_from, account_id_to, amnt) -> bool:
+    def transfer(self, account_id_from: int, account_id_to: int, amnt) -> bool:
         if account_id_from not in self._accounts or account_id_to not in self._accounts:
             return False
 

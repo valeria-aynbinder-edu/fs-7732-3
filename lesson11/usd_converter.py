@@ -22,4 +22,3 @@ class USDConverter:
         else:
             print(f"Currency {self.currency} does not exist")
             return None
-

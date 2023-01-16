@@ -2,7 +2,7 @@ import csv
 import os
 
 if __name__ == "__main__":
-    relative_path = "./data/alice_in_wonderland.txt"
+    relative_path = "data/alice_in_wonderland.txt"
     absolute_path = "/Users/valeria/src/zeiss/meeting3/files/data/alice_in_wonderland.txt"
 
     # file_handler = open(relative_path)
