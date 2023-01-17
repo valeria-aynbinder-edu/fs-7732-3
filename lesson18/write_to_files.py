@@ -7,6 +7,14 @@
 # with open('my_text.txt', 'a') as fh:
 #     fh.write("SUN!\n")
 
+with open("numbers.txt", "w") as f:
+    for i in range(1, 11):
+        f.write(str(i)+"\n")
+
+numbers_list = [f"{i}\n" for i in range(1, 11)]
+with open("numbers1.txt", "w") as f:
+    f.writelines(numbers_list)
+
 # with open('data/new_text.txt', 'a') as fh:
 #     fh.write("SUN!\n")
 
