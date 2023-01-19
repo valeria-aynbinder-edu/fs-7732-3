@@ -2,6 +2,8 @@ import datetime
 import os.path
 import pickle
 
+from lesson19.table_exceptions import *
+
 
 class Table:
 
@@ -16,15 +18,18 @@ class Table:
     def is_available(self):
         return self.occupied_seats == 0
 
-    def reserve(self, guests_num) -> bool:
+    def reserve(self, guests_num):
 
         # we allow to reserve a table only if it's available
         # and amount fo guests fits the amount of seats
-        if self.occupied_seats == 0 and self.seats >= guests_num:
-            self.occupied_seats = guests_num
-            self.start_time = datetime.datetime.utcnow()
-            return True
-        return False
+        if self.occupied_seats != 0:
+            raise TableAlreadyReserved()
+        if self.seats < guests_num:
+            raise InvalidGuestsNum(guests_num, self.seats)
+
+        self.occupied_seats = guests_num
+        self.start_time = datetime.datetime.utcnow()
+
 
     def release(self) -> bool:
 
@@ -144,3 +149,42 @@ class TableReservationSystem:
             suitable_tables.pop(min_table_idx)
 
         return sorted_tables
+
+
+if __name__ == '__main__':
+
+    restaurant = None
+
+    try:
+        if not os.path.exists("data.pickle"):
+            # create a system for japanika
+            restaurant = TableReservationSystem([3, 5, 2, 2, 6, 4, 3, 6], 'Japanika')
+        else:
+            with open("data.pickle", "rb") as f:
+                restaurant:TableReservationSystem = pickle.load(f)
+    except Exception:
+        print("Cannot initialize our restaurant, do you want to create it from scratch?")
+
+    try:
+        # working with our restaurant
+        # in your projects - a lot of code for user menu
+        print(restaurant.tables[1])
+        restaurant.reserve(4, 1)
+        restaurant.reserve(2, 2)
+        restaurant.reserve(1, 7)
+        print(restaurant.tables[1])
+    except TableException:
+        print("error occurred")
+        try:
+            num = int(input())
+        except:
+            pass
+    except ValueError:
+        print("value error")
+    except Exception:
+        print("unknown error")
+    finally:
+        with open("data.pickle", "wb") as f:
+            pickle.dump(restaurant, f)
+
+
