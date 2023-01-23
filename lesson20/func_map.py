@@ -1,9 +1,36 @@
 # map(func, *iterables) --> map object
 def foo_squared(num):
     return num**2
-#
-# my_list = [1, 3, 5, 6]
-#
+
+my_list = [1, 3, 5, 6]
+
+print(list(map(foo_squared, my_list)))
+print(list(map(lambda x: x**2, my_list)))
+print(my_list)
+
+words = ['grapes', 'strawberry', 'banana']
+words_new = list(map(str.title, words))
+print(words_new)
+
+nums1 = [1,2,3,4,5]
+nums2 = [10,20,30,40,50]
+
+# new_list = []
+# for n1, n2 in zip(nums1, nums2):
+#     new_list.append(n1 + n2)
+
+list_of_lists = [(1,2,3), [10,20,30], [100,200,300,400]]
+
+print(list(map(lambda n1, n2, n3: n1 + n2 + n3, nums1, nums2, [100, 200, 300, 400, 500])))
+print(list(map(lambda *args: sum(args), nums1, nums2, [100, 200, 300, 400, 500])))
+print(list(map(lambda *args: sum(args), *list_of_lists)))
+
+# print(list(map(sum, nums1, nums2)))
+
+def my_sum(*args):
+    return sum(args)
+
+
 
 # ret_val = list(map(foo_squared, my_list))
 #
@@ -15,13 +42,13 @@ my_list = ['Apple is nice', 'baNana is yellow', 'ANANAS']
     # do this on element
     # do @2 on element
 
-def my_split(elem):
-    return elem.split(" ")
-
-def my_get_last(elem: list[str]):
-    return elem[-1]
-
-ret_val_from_map = map(my_get_last, map(my_split, map(str.lower, my_list)))
+# def my_split(elem):
+#     return elem.split(" ")
+#
+# def my_get_last(elem: list[str]):
+#     return elem[-1]
+#
+# ret_val_from_map = map(my_get_last, map(my_split, map(str.lower, my_list)))
 # print(type(ret_val_from_map))
 # print(list(ret_val_from_map))
 # for i in ret_val_from_map:
@@ -66,15 +93,15 @@ ret_val_from_map = map(my_get_last, map(my_split, map(str.lower, my_list)))
 # print(list(ret_val))
 
 
-my_list = ['Apple is nice', 'baNana is yellow', 'ANANAS']
-
-def my_split(elem):
-    return elem.split(" ")
-
-my_split = lambda elem: elem.split(" ")
-
-def my_get_last(elem: list[str]):
-    return elem[-1]
+# my_list = ['Apple is nice', 'baNana is yellow', 'ANANAS']
+#
+# def my_split(elem):
+#     return elem.split(" ")
+#
+# my_split = lambda elem: elem.split(" ")
+#
+# def my_get_last(elem: list[str]):
+#     return elem[-1]
     # if 'a' in elem[-1]:
     #     return elem[-1]
     # else:
@@ -82,6 +109,6 @@ def my_get_last(elem: list[str]):
     # return elem[-1] if 'a' in elem[-1] else elem[0]
 
 # ret_val_from_map = map(my_get_last, map(my_split, map(str.lower, my_list)))
-ret_val_from_map = map(lambda x: x[-1],
-                       map(lambda x: x.split(" "),
-                           map(str.lower, my_list)))
+# ret_val_from_map = map(lambda x: x[-1],
+#                        map(lambda x: x.split(" "),
+#                            map(str.lower, my_list)))
