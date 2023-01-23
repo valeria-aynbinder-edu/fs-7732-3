@@ -1,3 +1,58 @@
+import pprint
+
+nums = [4, 5, 23, 1, 5]
+# ret_val = nums.sort()
+# print(ret_val)
+# print(nums)
+
+words = ['sun', 'sky', 'apple', 'mango']
+ret_val = sorted(words)
+# print("ret_val: ", ret_val)
+# print("original: ", words)
+
+
+students = [
+    {"name": "Moshe", "grade": 89},
+    {"name": "David", "grade": 93},
+    {"name": "Jack", "grade": 73},
+]
+# pprint.pprint(sorted(students, key=lambda s: s['grade']))
+# pprint.pprint(sorted(students, key=lambda s: s['grade'], reverse=True))
+
+class Student:
+    def __init__(self, name, grade):
+        self.name = name
+        self.grade = grade
+
+    def __str__(self):
+        return f"{self.name} with grade {self.grade}"
+
+    def __repr__(self):
+        return self.__str__()
+
+students_list = [
+    Student('David', 99),
+    Student('Noam', 100),
+    Student('Valeria', 80),
+    # Student('Shay', None),
+    Student('Eli', 100),
+    Student('Idan', 99)
+]
+
+# print(sorted(students_list, key=lambda s: (s.grade, s.name)))
+print(sorted(students_list, key=lambda s: s.grade))
+
+# print(sorted(students_list, key=lambda s: s.grade or 0))
+# print(sorted(students_list, key=lambda s: s.grade if s.grade != None else 0))
+#
+# print(sorted(students_list, key=lambda s: s.grade if s.__getattribute__('grade') and s.grade else 0))
+
+
+print((34, 'ab', 2) < (33, 'aa', 0))
+print((34, 'ab', 2) < (34, 'aa', 0))
+print((34, 'ab', 2) < (34, 'ab', 10))
+
+
 # # sorted([3, 1, -5, 6, 9])
 # # sorted([3, 1, -5, 6, 9], reverse=True)
 # import datetime
@@ -112,10 +167,10 @@
 # def my_best_compare(w):
 #     return len(w)
 # sorted(words, key=my_best_compare)
-import datetime
-
-d1 = "1h 5m"
-tr1: datetime.timedelta = datetime.datetime.strptime(d1, "%Hh %Mm") - \
-      datetime.datetime(year=1900, month=1, day=1)
-print(tr1.total_seconds() // 60)
+# import datetime
+#
+# d1 = "1h 5m"
+# tr1: datetime.timedelta = datetime.datetime.strptime(d1, "%Hh %Mm") - \
+#       datetime.datetime(year=1900, month=1, day=1)
+# print(tr1.total_seconds() // 60)
 
