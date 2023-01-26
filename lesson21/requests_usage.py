@@ -46,24 +46,24 @@ import requests
 #                         params={'name': 'valeria'})
 # print(response.status_code, response.text, sep="\n")
 
-if __name__ == '__main__':
-
-    name = input("Insert your name: ")
-    GENDERIZE_URL = "https://api.genderize.io"
-    response = requests.get(
-        GENDERIZE_URL, params={'name': name})
-    if response.status_code < 400:
-        name_dict = response.json()
-        print(f"Your name is a {name_dict['gender']} name with probability of {name_dict['probability']}%")
-    else:
-        print(f"There is an error: {response.status_code}")
-
-    countries = {"country": [{"country_id": "GH", "probability": 0.224}, {"country_id": "PH", "probability": 0.084},
-                 {"country_id": "NG", "probability": 0.073}, {"country_id": "US", "probability": 0.061},
-                 {"country_id": "NE", "probability": 0.034}], "name": "nathaniel"}
-
-    mx_prob_country = sorted(countries['country'], key=lambda c: c['probability'], reverse=True)[0]
-    print(mx_prob_country)
+# if __name__ == '__main__':
+#
+#     name = input("Insert your name: ")
+#     GENDERIZE_URL = "https://api.genderize.io"
+#     response = requests.get(
+#         GENDERIZE_URL, params={'name': name})
+#     if response.status_code < 400:
+#         name_dict = response.json()
+#         print(f"Your name is a {name_dict['gender']} name with probability of {name_dict['probability']}%")
+#     else:
+#         print(f"There is an error: {response.status_code}")
+#
+#     countries = {"country": [{"country_id": "GH", "probability": 0.224}, {"country_id": "PH", "probability": 0.084},
+#                  {"country_id": "NG", "probability": 0.073}, {"country_id": "US", "probability": 0.061},
+#                  {"country_id": "NE", "probability": 0.034}], "name": "nathaniel"}
+#
+#     mx_prob_country = sorted(countries['country'], key=lambda c: c['probability'], reverse=True)[0]
+#     print(mx_prob_country)
 
 
 # with path param
