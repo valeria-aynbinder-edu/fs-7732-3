@@ -37,6 +37,38 @@ if __name__ == '__main__':
     print(re.search("ca+t+", "caaaaaaatttttt"))
     print(re.search("\+", "++++"))
     print(re.search("\++", "++++"))
+    print(re.search("ca*t", "cat"))
+    print(re.search("ca*t", "caaaaaat"))
+
+    print(re.search("ca*t", "ct"))
+    print(re.search("(ca)*t", "ct"))
+    print(re.search("[ca]*t", "ct"))
+    print(re.search("[ca]*t", "cccacacaaaat"))
+    print(re.search("[ca]*t", "64734834rsdgt"))
+    print(re.search("c*a*t", "ccccccccccaaaaat"))
+
+    print(re.search("ca?t", "ct"))
+    print(re.search("ca?t", "cat"))
+    print(re.search("ca?t", "caat"))
+
+    print(re.search("ca{3,7}t", "caaat"))
+    print(re.search("ca{3,7}t", "caaaaaaat"))
+    print(re.search("ca{,7}t", "caaaaaaat"))
+    print(re.search("ca{3,}t", "caaaaaaat"))
+    print(re.search("ca{3}t", "caaaaaaat"))
+    print(re.search("ca{3}t", "caaat"))
+    print(re.search("(cat|dog) +[^ ]", "dog dog cat")) #dog cat
+    print(re.search('((dog) (cat)|(cat) (dog))+', 'cat dog dog'))
+
+
+
+
+
+
+
+
+
+
 
     # print(re.search("0*[a-c]9+", "cat"))
     # print(re.search("0*[a-c]9+", "c"))
