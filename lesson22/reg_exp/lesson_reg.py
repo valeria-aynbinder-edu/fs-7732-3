@@ -57,10 +57,23 @@ if __name__ == '__main__':
     print(re.search("ca{3,}t", "caaaaaaat"))
     print(re.search("ca{3}t", "caaaaaaat"))
     print(re.search("ca{3}t", "caaat"))
-    print(re.search("(cat|dog) +[^ ]", "dog dog cat")) #dog cat
-    print(re.search('((dog) (cat)|(cat) (dog))+', 'cat dog dog'))
 
+    # chen
+    print(re.search("(dog|cat)( dog| cat)*", 'dog'))
 
+    #lior
+    # print(re.search("(cat |dog )(dog ?|cat ?)*", " dog cat dog cat "))
+
+    print(re.search("[0-9].*[0-9]", "9sdfh%^-#ljde4"))
+    print(re.search("[0-9]*[0-9]", "9sdfh%^-#ljde4"))
+
+    print(re.search(".*[0-9]$", "dgffdhfhf8"))
+    print(re.search(".*[0-9]$", "dgffdhfhf8a"))
+
+    print(re.search("^[0-9].*", "7sdkfgjdh"))
+    print(re.search("^[0-9].*", "a7sdkfgjdh"))
+
+    print(re.search("[^0-9]", "%"))
 
 
 
