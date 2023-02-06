@@ -12,26 +12,31 @@
 # iter()
 # next()
 #
-my_list = [1,2,3,4]
+# my_list = [1,2,3,4]
 # for i in my_list:
 #     print(i)
-
-# __iter__
-# __next__
-
+#
+#
 # list_iter = iter(my_list)
 # print(type(list_iter))
+# print(list_iter)
 # print(next(list_iter))
 # print(next(list_iter))
 # print(next(list_iter))
 # print(next(list_iter))
 # print(next(list_iter))
+
+# n = MyNumbers(1, 20)
+# for i in n:
+#     print(i)
+
 
 class MyNumbers:
 
     def __init__(self, start=0, end=10):
         self.start_from = start
         self.end = end
+        self.counter = None
 
     def __iter__(self):
         self.counter = self.start_from
@@ -44,14 +49,31 @@ class MyNumbers:
         self.counter += 1
         return curr
 
+
+n = MyNumbers(5, 8)
+for i in n:
+    print(i)
+
+for x in n:
+    print(x)
+
+d = {1:"a", 2:"b", 3:"c"}
+
+for i in d:
+    print(i)
+
+for k,v in d.items():
+    print(k,v)
+
+
 # my_nums = iter(MyNumbers(5, 7))
 # next(my_nums) # 5
 # next(my_nums) # 6
 # next(my_nums) # 7
 # next(my_nums) # 6
 
-for i in MyNumbers(5, 7):
-    print(i)
+# for i in MyNumbers(5, 7):
+#     print(i)
 
 #
 #
@@ -61,23 +83,23 @@ for i in MyNumbers(5, 7):
 # for i in myiter:
 #     print(i)
 
-class MyNumbers:
-    def __init__(self, max_limit):
-        self.max_limit = max_limit
-
-    def __iter__(self):
-        self.a = 0
-        return self
-
-    def __next__(self):
-        if self.a <= self.max_limit:
-            self.a += 1
-            return self.a
-        else:
-            raise StopIteration
-
-
-myclass = MyNumbers(10)
+# class MyNumbers:
+#     def __init__(self, max_limit):
+#         self.max_limit = max_limit
+#
+#     def __iter__(self):
+#         self.a = 0
+#         return self
+#
+#     def __next__(self):
+#         if self.a <= self.max_limit:
+#             self.a += 1
+#             return self.a
+#         else:
+#             raise StopIteration
+#
+#
+# myclass = MyNumbers(10)
 
 # for x in myclass:
 #     print(x)
