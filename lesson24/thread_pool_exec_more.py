@@ -54,9 +54,14 @@ if __name__ == '__main__':
     futures = []
 
     s = time.perf_counter()
-    with ThreadPoolExecutor() as executor:
+    with ThreadPoolExecutor(max_workers=10) as executor:
         for i in range(100):
-            futures.append(executor.submit(get_quote, i))
+            future = executor.submit(get_quote, i) #non-blocking
+            if future.done(): #non-blocking
+                print("done")
+            task_result = future.result(timeout=2) # blocking
+            task_error = future.exception(timeout=2) #blocking
+            futures.append(future)
 
     for future in as_completed(futures):
         results2.append(future.result())

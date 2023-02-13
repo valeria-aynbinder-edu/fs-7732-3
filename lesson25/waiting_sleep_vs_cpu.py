@@ -17,5 +17,5 @@ def wait_wasting_cpu(sec):
 
 
 if __name__ == '__main__':
-    wait_using_sleep(50)
-    # wait_wasting_cpu(50)
+    # wait_using_sleep(50)
+    wait_wasting_cpu(50)
