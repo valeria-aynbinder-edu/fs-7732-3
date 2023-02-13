@@ -1,5 +1,5 @@
 import multiprocessing
-from concurrent.futures import ProcessPoolExecutor
+from concurrent.futures import ProcessPoolExecutor, as_completed
 
 import time
 
@@ -14,16 +14,14 @@ def countdown(n_from, n_to):
 if __name__ == '__main__':
     start = time.time()
 
-    p1 = multiprocessing.Process(target=countdown, args=(COUNT, COUNT//2))
-    p2 = multiprocessing.Process(target=countdown, args=(COUNT//2, 0))
+    with ProcessPoolExecutor() as executor:
+        future1 = executor.submit(countdown, COUNT, COUNT//2)
+        future2 = executor.submit(countdown, COUNT//2, 0)
+        start = time.time()
 
-    p1.start()
-    p2.start()
-
-    p1.join()
-    p2.join()
+    for f in as_completed([future1, future2]):
+        pass
 
     end = time.time()
-    print('Time taken in seconds -', end - start)
 
-    executor = ProcessPoolExecutor()
+    print('Time taken in seconds -', end - start)

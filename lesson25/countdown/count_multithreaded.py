@@ -1,4 +1,5 @@
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from threading import Thread
 
 COUNT = 100_000_000
@@ -10,16 +11,15 @@ def countdown(n_from, n_to):
 
 
 if __name__ == '__main__':
-    t1 = Thread(target=countdown, args=(COUNT, COUNT//2))
-    t2 = Thread(target=countdown, args=(COUNT//2, 0))
 
-    start = time.time()
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        future1 = executor.submit(countdown, COUNT, COUNT//2)
+        future2 = executor.submit(countdown, COUNT//2, 0)
+        start = time.time()
 
-    t1.start()
-    t2.start()
+    for f in as_completed([future1, future2]):
+        pass
 
-    t1.join()
-    t2.join()
     end = time.time()
 
     print('Time taken in seconds -', end - start)
