@@ -1,0 +1,10 @@
+1. CRUD tutorial
+2. create db / create table
+3. column types / constraints - create movie table, pk
+4. tutorial create Directors table
+5. table relations - one2one / one2many / many2many
+6. foreign keys
+7. connect movies to directors
+8. join
+9. join types
+10. connect movies to actors (many2many)
