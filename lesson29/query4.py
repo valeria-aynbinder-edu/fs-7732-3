@@ -57,15 +57,15 @@ def demo_query():
             # print(cur.rowcount)
             # print(cur.arraysize)
             # # cur.
-            # result = cur.fetchmany(2)
-            # print(result)
+            result = cur.fetchmany(2)
+            print(result)
 
             # using_fetch_one(cur)
             # using_fetch_many(cur)
             # using_fetch_all(cur)
 
-            result = cur.fetchall()
-            print(result)
+            # result = cur.fetchall()
+            # print(result)
 
     conn.close()
 

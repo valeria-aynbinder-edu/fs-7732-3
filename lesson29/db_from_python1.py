@@ -14,6 +14,8 @@ conn = psycopg2.connect(
     user="postgres",
     password="postgres")
 print(conn)
+print(conn.closed)
 conn.close()
 print(conn)
+print(conn.closed)
 
