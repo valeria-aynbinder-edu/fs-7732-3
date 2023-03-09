@@ -15,9 +15,12 @@ with psycopg2.connect(
             user="postgres",
             password="postgres") as conn:
     with conn.cursor() as cur:
-        cur.execute("INSERT INTO transactions...")
+        cur.execute("INSERT INTO transactions (transaction_type, ts, initiated_by) VALUES('transfer', '2023-03-09', 1) returning id;")
+        new_transaction_id = cur.fetchone()
         cur.execute("update table accounts set...")
         #...
+
+
 
     # conn.commit()
     # conn.rollback()
