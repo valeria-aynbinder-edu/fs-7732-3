@@ -1,0 +1,23 @@
+customers
+accounts
+transaction
+
+GET /api/customers - list of customers
+    filters: query params
+    name, id, branch, address
+    /api/customers?name=valeria&branch=234
+
+POST /api/customers - create a new customer
+    customer details as form in body
+
+
+GET /api/customers/<customer_id>
+    return all the data about the customer
+    return ids of corresponding accounts
+
+
+    GET /api/customers/<customer_id>/accounts
+    GET /api/customers/<customer_id>/accounts/<account_id>
+    GET /api/customers/<customer_id>/accounts/<account_id>/transactions
+
+    GET /api/transactions?customer_id=345&account_id=3453
