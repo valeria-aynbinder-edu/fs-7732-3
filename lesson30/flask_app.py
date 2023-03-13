@@ -39,6 +39,16 @@ def greet_name_query():
                     'address_id': request.args['address']})
 
 
+@app.route('/api/users', methods=['POST'])
+def create_user():
+    print(request.form)
+    print(request.data)
+    print(request.json)
+    return {}, 200
+
+
+
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001, debug=True)

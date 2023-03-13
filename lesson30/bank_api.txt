@@ -1,0 +1,36 @@
+CRUD
+
+GET /api/v1/customers
+GET /api/v1/customers?name=valeria
+GET /api/v1/customers?city=netanya
+GET /api/v1/customers?passport_num=e754725
+GET /api/v1/customers?city=netanya&name=cohen
++ optional query params: passport_num, name
+usually less detailed data
+return val: []
+
+POST /api/v1/customers
+create a new customer
++ customer details in body
+return value: {new customer data}
+
+PUT/PATCH /api/v1/customers/<customer_id>
+all the details in body
+
+DELETE /api/v1/customers/<customer_id>
+
+
+GET /api/v1/customers/<customer_id>
+more detailed data
+return value: {name, address, }
+1: return only customer data
+2: return customer data + accounts numbers
+3: return customer data + all the customer's accounts data
+
+GET /api/v1/customers/<customer_id>/accounts
+
+GET /api/v1/customers/<customer_id>/accounts/<account_id>
+
+
+
+GET /api/v1/accouts

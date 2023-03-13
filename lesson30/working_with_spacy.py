@@ -25,7 +25,7 @@ if __name__ == '__main__':
 
 
     for i, sentence in enumerate(doc.sents):
-        print(f"Sentence {i}: {sentence}")
+        # print(f"Sentence {i}: {sentence}")
         # for token in sentence:
         #     print(token.text, token.pos_)
         for ent in sentence.ents:
