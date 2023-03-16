@@ -43,6 +43,29 @@ def get_customer(customer_id):
     except Exception as e:
         return {'error': f"Unexpected error, {e}"}, 500
 
+@app.route("/api/v1/customers/<int:customer_id>/accounts", methods=['GET'])
+def customer_accounts(customer_id):
+    with conn:
+        with conn.cursor() as cur:
+            sql = """
+            SELECT accounts.* FROM accounts JOIN account_owners
+            ON account_owners.account_id = accounts.id 
+            WHERE account_owners.customer_id = %s;
+            """
+            cur.execute(sql, (customer_id,))
+            results = cur.fetchall()
+            if results:
+                ret_data = []
+                for res in results:
+                    ret_data.append({
+                        'id': res[0],
+                        'balance': res[1],
+                        'max_limit': res[2],
+                    })
+                return jsonify(ret_data)
+            else:
+                return {'error': f'customer with id {customer_id} does not exist'}, 404
+
 @app.route("/api/v1/customers/<int:customer_id>", methods=['PUT'])
 def update_customer(customer_id):
     new_data = request.form
