@@ -21,33 +21,27 @@ conn = psycopg2.connect(
 @app.route("/api/v1/customers/<int:customer_id>", methods=['GET'])
 def get_customer(customer_id):
     print(f"called /customers/customer_id/{customer_id}")
-    with conn:
-        with conn.cursor() as cur:
-            sql = "SELECT * FROM customers WHERE id = %s"
-            cur.execute(sql, (customer_id,))
-            result = cur.fetchone()
-            if result:
-                ret_data = {
-                    'id': result[0],
-                    'passport_num': result[1],
-                    'name': result[2],
-                    'address': result[3]
-                }
-                # option I
-                # response = app.response_class(
-                #     response=json.dumps(ret_data),
-                #     status=200,
-                #     mimetype='application/json'
-                # )
-                # return response
-
-                # option II
-                return jsonify(ret_data)
-            else:
-                return app.response_class(
-                    status=404
-                )
-
+    try:
+        with conn:
+            with conn.cursor() as cur:
+                sql = "SELECT * FROM customers WHERE id = %s"
+                cur.execute(sql, (customer_id, ))
+                result = cur.fetchone()
+                print(f"result from fetchone: {result}")
+                if result:
+                    ret_data = {
+                        'id': result[0],
+                        'passport_num': result[1],
+                        'name': result[2],
+                        'address': result[3]
+                    }
+                    return jsonify(ret_data)
+                else:
+                    return {'error': f'customer with id {customer_id} does not exist'}, 404
+    except psycopg2.DatabaseError as e:
+        return {'error': f"Database error, {e}"}, 500
+    except Exception as e:
+        return {'error': f"Unexpected error, {e}"}, 500
 
 @app.route("/api/v1/customers/<int:customer_id>", methods=['PUT'])
 def update_customer(customer_id):

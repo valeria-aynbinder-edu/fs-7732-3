@@ -1,0 +1,9 @@
+http request
+
+method - GET/POST/PUT/PATCH/DELETE
+url - https://google.com:80/search/my/something/?query=whatsapp
+path params: api/accounts/235432/
+query params: api/accounts/?balance_from=1000000&balance_to=200000
+
+header - metadata
+body - PUT/POST
