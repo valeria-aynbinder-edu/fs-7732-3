@@ -77,11 +77,47 @@ def update_customer(customer_id):
     sql = f"UPDATE customers SET {','.join(updates_str_list)} WHERE id=%s"
     with conn:
         with conn.cursor() as cur:
-            cur.execute(sql, tuple(new_data.values()) + tuple([customer_id]))
+            cur.execute(sql, tuple(new_data.values()) + (customer_id,))
             if cur.rowcount == 1:
                 # update succeeded
-                return app.response_class(status=200)
-    return app.response_class(status=500)
+                return {}, 200
+    return {}, 500
+
+@app.route("/api/v1/customers", methods=['POST'])
+def create_customer():
+
+    print(request.form)
+    # validate all the required fields are received
+    required_fields = {
+        'passport_num': int,
+        'name': str,
+        'address': str
+    }
+    if set(request.form.keys()) != set(required_fields.keys()) and \
+            len(request.form.keys()) != len(required_fields):
+        return {'error': 'error in provided fields'}, 400
+
+    str_list = []
+    for field in request.form:
+        try:
+            required_fields[field](request.form[field])
+            str_list.append(field)
+        except:
+            return {'error': f'invalid type for {field}, '
+                             f'expected: {required_fields[field]}, got {type(field)}'}, 400
+
+    sql = f"INSERT INTO customers ({','.join(request.form.keys())}) VALUES ({','.join(['%s'] * 3)})"
+
+    # problem here!
+    # sql = f"INSERT INTO customers (passport_num, name, address) VALUES (%s, %s, %s)"
+
+    with conn:
+        with conn.cursor() as cur:
+            cur.execute(sql, tuple(request.form.values()))
+            if cur.rowcount == 1:
+                # create succeeded
+                return {}, 201
+    return {}, 500
 
 # @app.route("/api/v1/account", methods=['POST', 'GET'])
 # def accounts():
