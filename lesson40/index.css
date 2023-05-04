@@ -1,0 +1,26 @@
+p {
+    color: green !important;
+}
+
+
+.my-css2 {
+    color:yellow;
+    font-style: italic;
+}
+.my-css {
+    color:blueviolet
+}
+
+/* .btn-primary {
+    color: aqua;
+} */
+
+
+
+/*
+!important
+inline
+classes - the last one is the strongest
+tag styles (p)
+default
+ */
