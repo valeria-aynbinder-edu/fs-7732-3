@@ -2,23 +2,37 @@
 <html lang="en">
 <head>
     <script>
-        const intervalId = setInterval(() => {
-            console.log(new Date())
-        }, 3000)
-        console.log(`Interval id: ${intervalId}`)
+        let timerId = null
 
-        console.log("Setting timeout")
-        setTimeout(() => {
-            clearInterval(intervalId)
-            console.log('cleared interval', intervalId)
-        }, 20000)
-        
-        console.log('finished code')
+        const afterTimer = () => {
+            console.log('after timer')
+            const elem = document.getElementById('p-id')
+            elem.hidden = false
+            const startButton = document.getElementById('start-btn-id')
+            startButton.disabled = false
+        }
 
+        const startCount = (event) => {
+            const startButton = event.target
+            startButton.disabled = true
 
+            timerId = setTimeout(afterTimer, 5000)
+            console.log('done', timerId)
+            // clearTimeout(timerId)
+            // console.log('canceled timer', timerId)
+        }
+
+        const cancelTimer = () => {
+            clearTimeout(timerId)
+            console.log('canceled', timerId)
+        }
     </script>
 </head>
 <body>
+
+    <button id="start-btn-id" onclick="startCount(event)">Count 5 seconds</button>
+    <button onclick="cancelTimer()">Cancel</button>
+    <p id="p-id" hidden>5 seconds passed</p>
     
 </body>
 </html>
